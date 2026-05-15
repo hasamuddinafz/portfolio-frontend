@@ -1,7 +1,7 @@
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
-
+import { GoogleAnalytics } from "@next/third-parties/google";
 const poppins = Poppins({
   variable: "--font-poppins",
   subsets: ["latin"],
@@ -25,6 +25,7 @@ export default function RootLayout({ children }) {
           {children}
         </ThemeProvider>
       </body>
+      <GoogleAnalytics gaId="G-ZVWHYSZ2R7" />
     </html>
   )
 }
