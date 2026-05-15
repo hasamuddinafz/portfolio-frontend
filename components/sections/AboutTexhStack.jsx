@@ -22,9 +22,8 @@ const tabs = [
         items: [
             '.NET Core & EF Core',
             'ASP.NET Core MVC & Web API',
-            'Node.js & Express.js',
-            'RESTful API Design',
             'Authentication (JWT, Identity)',
+            'CQRS & Clean Architecture',
         ],
     },
     {
@@ -33,6 +32,7 @@ const tabs = [
         items: [
             'PostgreSQL',
             'Microsoft SQL Server',
+            'Oracle Database',
             'MongoDB',
             'Git & GitHub',
             'Docker',

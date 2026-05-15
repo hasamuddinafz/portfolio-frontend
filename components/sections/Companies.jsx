@@ -67,6 +67,7 @@ export default function Companies() {
                                                     src={logo.src}
                                                     alt={logo.name}
                                                     fill
+                                                    sizes="200px"
                                                     className="object-contain"
                                                 />
                                             </div>

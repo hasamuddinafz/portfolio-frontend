@@ -3,6 +3,7 @@ import Companies from "@/components/sections/Companies";
 import ContactCTA from "@/components/sections/ContactCTA";
 import FeaturedProjects from "@/components/sections/FeaturedProjects";
 import Hero from "@/components/sections/Hero";
+import { getProjects } from "@/libs/api";
 
 export const metadata = {
     title: 'Hasamuddin Afzali',
@@ -17,13 +18,14 @@ export const metadata = {
         type: 'website',
     },
 }
-export default function page() {
+export default async function page() {
+    const projects = await getProjects();
     return (
         <div>
             <Hero />
             <About />
             <Companies />
-            <FeaturedProjects />
+            <FeaturedProjects projects={projects} />
             <ContactCTA />
         </div>
     )

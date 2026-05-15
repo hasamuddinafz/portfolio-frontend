@@ -5,6 +5,22 @@ import { motion, useInView } from 'framer-motion'
 
 const timeline = [
     {
+        period: 'Oct 2025 – May 2026',
+        title: 'Frontend Developer',
+        company: 'Liberyus',
+        location: 'Remote',
+        description: 'Developed modern web interfaces and contributed to frontend architecture using React and Next.js.',
+        type: 'work',
+    },
+    {
+        period: '2024 – 2025',
+        title: 'Part-time Graphic Designer',
+        company: 'Birlik Ajans',
+        location: 'Karabük, Turkey',
+        description: 'Designed visual content and branding materials for various clients on a part-time basis.',
+        type: 'work',
+    },
+    {
         period: 'June 2024 – July 2024',
         title: 'Fullstack Web Developer Intern',
         company: 'Karabük Technokent',
@@ -21,8 +37,16 @@ const timeline = [
         type: 'work',
     },
     {
-        period: '2021 – Present',
-        title: 'Computer Engineering',
+        period: '2025 – Present',
+        title: 'Master\'s Degree, Computer Engineering',
+        company: 'Karabük University',
+        location: 'Karabük, Turkey',
+        description: 'Pursuing graduate studies focused on advanced software architectures and modern web technologies.',
+        type: 'education',
+    },
+    {
+        period: '2021 – 2025',
+        title: 'Bachelor\'s Degree, Computer Engineering',
         company: 'Karabük University',
         location: 'Karabük, Turkey',
         description: 'Focused on software architectures, web technologies, and system design.',

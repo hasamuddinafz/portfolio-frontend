@@ -6,41 +6,16 @@ import { ArrowUpRight } from 'lucide-react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 
-const projects = [
-    {
-        number: '01',
-        title: 'Demirsoy Plast Corporate Website',
-        description: 'Corporate website developed with C# and Bootstrap under the .NET MVC framework.',
-        tags: ['C#', '.NET MVC', 'Bootstrap'],
-        liveUrl: 'https://demirsoyplast.com/',
-        githubUrl: null,
-    },
-    {
-        number: '02',
-        title: 'Aydoğan GYD Real Estate Platform',
-        description: 'A real estate platform focused on trust, architectural quality, and customer experience.',
-        tags: ['React', 'Next.js', 'Tailwind CSS'],
-        liveUrl: 'https://aydogangyd.com.tr/',
-        githubUrl: null,
-    },
-    {
-        number: '03',
-        title: 'React Weather App',
-        description: 'Real-time weather application using OpenWeatherMap API with 5-day forecasts.',
-        tags: ['React', 'OpenWeatherMap API'],
-        liveUrl: null,
-        githubUrl: 'https://github.com/hasamuddinafz/weather-app',
-    },
-]
-export default function FeaturedProjects() {
+export default function FeaturedProjects({ projects = [] }) {
     const ref = useRef(null)
     const isInView = useInView(ref, { once: true, margin: '-80px' })
 
+    const featured = projects.slice(0, 3)
+    if (featured.length === 0) return null
     return (
         <section ref={ref} className="relative py-32 overflow-hidden">
             <div className="max-w-6xl mx-auto px-6">
 
-                {/* Başlık */}
                 <div className="flex items-end justify-between mb-16">
                     <div>
                         <motion.div
@@ -78,16 +53,12 @@ export default function FeaturedProjects() {
                     </motion.a>
                 </div>
 
-                {/* Projeler */}
                 <div className="flex flex-col divide-y divide-border">
-                    {projects.map(function (project, i) {
-                        return (
-                            <ProjectRow key={project.number} project={project} index={i} isInView={isInView} />
-                        )
-                    })}
+                    {featured.map((project, i) => (
+                        <ProjectRow key={project.id || i} project={project} index={i} isInView={isInView} />
+                    ))}
                 </div>
 
-                {/* Mobil — tüm projeler linki */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={isInView ? { opacity: 1 } : {}}
@@ -102,13 +73,16 @@ export default function FeaturedProjects() {
                         <ArrowUpRight size={14} />
                     </a>
                 </motion.div>
-
             </div>
-        </section>
+        </section >
     )
 }
 
 function ProjectRow({ project, index, isInView }) {
+    const tags = project.techStack
+        ? project.techStack.split(',').map(t => t.trim())
+        : project.tags || []
+
     return (
         <motion.div
             initial={{ opacity: 0, y: 32 }}
@@ -116,12 +90,10 @@ function ProjectRow({ project, index, isInView }) {
             transition={{ duration: 0.8, delay: index * 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="group grid grid-cols-1 md:grid-cols-[80px_1fr_auto] gap-4 md:gap-8 py-8 items-start cursor-default"
         >
-            {/* Numara */}
             <span className="text-xs font-mono text-text-muted group-hover:text-accent transition-colors duration-300">
-                {project.number}
+                {String(index + 1).padStart(2, '0')}
             </span>
 
-            {/* İçerik */}
             <div className="flex flex-col gap-3">
                 <h3
                     className="font-bold text-text-primary group-hover:text-accent transition-colors duration-300"
@@ -133,20 +105,17 @@ function ProjectRow({ project, index, isInView }) {
                     {project.description}
                 </p>
                 <div className="flex flex-wrap gap-2 mt-1">
-                    {project.tags.map(function (tag) {
-                        return (
-                            <span
-                                key={tag}
-                                className="px-2.5 py-1 text-xs font-mono text-text-muted border border-border rounded-full"
-                            >
-                                {tag}
-                            </span>
-                        )
-                    })}
+                    {tags.map(tag => (
+                        <span
+                            key={tag}
+                            className="px-2.5 py-1 text-xs font-mono text-text-muted border border-border rounded-full"
+                        >
+                            {tag}
+                        </span>
+                    ))}
                 </div>
             </div>
 
-            {/* Linkler */}
             <div className="flex items-center gap-3 md:pt-1">
                 {project.githubUrl && (
                     <a
@@ -171,6 +140,6 @@ function ProjectRow({ project, index, isInView }) {
                     </a>
                 )}
             </div>
-        </motion.div>
+        </motion.div >
     )
 }
