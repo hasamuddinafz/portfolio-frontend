@@ -28,7 +28,7 @@ export default function BlogDetail({ post }) {
                     className="mb-12"
                 >
                     <a
-                        href="/blog"
+                        href="/blogs"
                         className="flex items-center gap-2 text-sm text-text-muted hover:text-text-primary transition-colors duration-200"
                     >
                         ← Back to Blog
@@ -103,7 +103,7 @@ export default function BlogDetail({ post }) {
                     className="mt-20 pt-12 border-t border-border"
                 >
                     <a
-                        href="/blog"
+                        href="/blogs"
                         className="group flex items-center gap-2 text-sm font-medium text-text-primary hover:text-accent transition-colors duration-200"
                     >
                         View all posts
