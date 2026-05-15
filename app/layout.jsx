@@ -1,7 +1,8 @@
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import Script from "next/script";
+
 const poppins = Poppins({
   variable: "--font-poppins",
   subsets: ["latin"],
@@ -17,7 +18,6 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-
   return (
     <html lang="en" className={`${poppins.variable} h-full antialiased`} suppressHydrationWarning>
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
@@ -25,7 +25,18 @@ export default function RootLayout({ children }) {
           {children}
         </ThemeProvider>
       </body>
-      <GoogleAnalytics gaId="G-ZVWHYSZ2R7" />
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-ZVWHYSZ2R7"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-ZVWHYSZ2R7');
+        `}
+      </Script>
     </html>
   )
 }
